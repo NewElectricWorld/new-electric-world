@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Electric World</title>
+    <style>
+        :root {
+            --main-bg: #0d0d0d;
+            --accent: #e53935;
+            --secondary-accent: #43a047;
+            --text-light: #f9f9f9;
+            --text-muted: #bbbbbb;
+        }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--main-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        header {
+            background-color: #000;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            color: var(--accent);
+        }
+        header p {
+            font-size: 1.2em;
+            color: var(--secondary-accent);
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #111;
+            padding: 10px;
+        }
+        nav a {
+            color: var(--text-light);
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: var(--accent);
+        }
+        section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        h2 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 5px;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        .form-container {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 12px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            background: #2a2a2a;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+        }
+        .btn {
+            background-color: var(--secondary-accent);
+            color: #fff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        footer {
+            background: #000;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            color: var(--text-muted);
+        }
+        .lang-switch {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+        }
+        .lang-switch a {
+            color: var(--text-muted);
+            margin-left: 10px;
+            text-decoration: none;
+        }
+        .lang-switch a:hover {
+            color: var(--accent);
+        }
+    </style>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("5d4yAAkgOKsOiY0hw");
+        })();
+
+        function sendMail(e) {
+            e.preventDefault();
+            emailjs.sendForm('service_d9m9t1i', 'template_b4cafq8', e.target)
+                .then(() => alert("Съобщението е изпратено успешно!"))
+                .catch(error => alert("Грешка при изпращане: " + error.text));
+            e.target.reset();
+        }
+    </script>
+</head>
+<body>
+    <div class="lang-switch">
+        <a href="#" onclick="switchLang('bg')">BG</a> |
+        <a href="#" onclick="switchLang('en')">EN</a>
+    </div>
+    <header>
+        <h1>New Electric World</h1>
+        <p>Let dreams come true</p>
+    </header>
+    <nav>
+        <a href="#services">Услуги</a>
+        <a href="#about">За нас</a>
+        <a href="#projects">Проекти</a>
+        <a href="#contact">Контакти</a>
+    </nav>
+    <section id="services">
+        <h2>Нашите услуги</h2>
+        <ul>
+            <li>Проектиране и изграждане на електроинсталации за жилищни, търговски и индустриални обекти</li>
+            <li>Монтаж и поддръжка на фотоволтаични системи</li>
+            <li>Инспекция, диагностика и ремонт на съществуващи електрически инсталации</li>
+            <li>Енергийна ефективност и консултации за оптимизация на електрически системи</li>
+            <li>Автоматизация и табла ниско напрежение (НН)</li>
+        </ul>
+    </section>
+    <section id="about">
+        <h2>За нас</h2>
+        <p>
+            "New Electric World" е българска компания, специализирана в електроинженерни услуги и фотоволтаични решения. Работим с висококачествени материали, опитни специалисти и ангажираност към устойчивото бъдеще.
+        </p>
+    </section>
+    <section id="projects">
+        <h2>Примерни проекти</h2>
+        <p>Очаквайте скоро снимки и детайли от завършени проекти по цяла България.</p>
+    </section>
+    <section id="contact">
+        <h2>Свържете се с нас</h2>
+        <div class="form-container">
+            <form onsubmit="sendMail(event)">
+                <label for="user_name">Вашето име</label>
+                <input type="text" name="user_name" required>
+                <label for="user_email">Вашият email</label>
+                <input type="email" name="user_email" required>
+                <label for="message">Съобщение</label>
+                <textarea name="message" rows="5" required></textarea>
+                <button type="submit" class="btn">Изпрати</button>
+            </form>
+        </div>
+        <p style="margin-top:20px;">Телефони: 0895281132, 0895112128<br>Имейл: Newlectricworld11@gmail.com</p>
+    </section>
+    <footer>
+        <p>&copy; 2025 New Electric World. Всички права запазени.</p>
+    </footer>
+    <script>
+        function switchLang(lang) {
+            if (lang === 'en') {
+                document.querySelector('h1').textContent = 'New Electric World';
+                document.querySelector('header p').textContent = 'Let dreams come true';
+                document.querySelectorAll('nav a')[0].textContent = 'Services';
+                document.querySelectorAll('nav a')[1].textContent = 'About Us';
+                document.querySelectorAll('nav a')[2].textContent = 'Projects';
+                document.querySelectorAll('nav a')[3].textContent = 'Contact';
+                document.querySelector('#services h2').textContent = 'Our Services';
+                document.querySelector('#services ul').innerHTML = `
+                    <li>Design and installation of electrical systems for residential, commercial and industrial buildings</li>
+                    <li>Installation and maintenance of photovoltaic systems</li>
+                    <li>Inspection, diagnostics and repair of existing electrical installations</li>
+                    <li>Energy efficiency and consulting for optimization</li>
+                    <li>Automation and low-voltage panels</li>`;
+                document.querySelector('#about h2').textContent = 'About Us';
+                document.querySelector('#about p').textContent = 'New Electric World is a Bulgarian company specializing in electrical engineering services and photovoltaic solutions. We work with high-quality materials and experienced professionals, committed to a sustainable future.';
+                document.querySelector('#projects h2').textContent = 'Sample Projects';
+                document.querySelector('#projects p').textContent = 'Images and details from completed projects coming soon.';
+                document.querySelector('#contact h2').textContent = 'Contact Us';
+                document.querySelector('label[for="user_name"]').textContent = 'Your Name';
+                document.querySelector('label[for="user_email"]').textContent = 'Your Email';
+                document.querySelector('label[for="message"]').textContent = 'Message';
+                document.querySelector('.btn').textContent = 'Send';
+            } else {
+                location.reload();
+            }
+        }
+    </script>
+</body>
+</html>
